@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venkateshwara PG - Luxury Living</title>
+  
+  <!-- Poppins Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      overflow: hidden; /* Keeps the split screen fixed to full screen viewport */
+    }
+
+    /* ==========================================
+       1. SPLIT SCREEN LAYOUT (60% Left / 40% Right)
+    ========================================== */
+    .container {
+      position: relative;
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* Left Side: 60% Width, Amber/Orange Theme */
+    .left-half {
+      flex: 0 0 60%;    
+      background: linear-gradient(135deg, #E97E1A 0%, #d16d12 100%);
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 50px 60px;
+      text-align: left;
+    }
+
+    .left-half h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      line-height: 1.2;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      margin-bottom: 20px;
+    }
+
+    .left-half .blank-text {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #FFF8F0;
+      max-width: 550px;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    /* Right Side: 40% Width, Teal Theme with Slider */
+    .right-half {
+      flex: 0 0 40%;
+      background-color: #11998e;
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      position: relative;
+    }
+
+    /* Image & Building Slider Container */
+    .slider-container {
+      width: 100%;
+      max-width: 380px;
+      height: 240px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .slider-track {
+      display: flex;
+      width: 300%;
+      height: 100%;
+      animation: slideShow 12s infinite ease-in-out;
+    }
+
+    .slide {
+      width: 33.333%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes slideShow {
+      0% { transform: translateX(0); }
+      33% { transform: translateX(-33.333%); }
+      66% { transform: translateX(-66.666%); }
+      100% { transform: translateX(0); }
+    }
+
+    .pg-details-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 380px;
+      text-align: left;
+    }
+
+    .pg-details-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #FFF8F0;
+    }
+
+    .pg-details-card ul {
+      list-style: none;
+    }
+
+    .pg-details-card ul li {
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ==========================================
+       2. MEETING POINT SQUARE BOX (Centered on 60/40 Border)
+    ========================================== */
+    .meeting-square {
+      position: absolute;
+      top: 50%;
+      left: 60%; /* Sits precisely on the 60/40 boundary line */
+      transform: translate(-70%, -30%);
+      
+      width: 310px;
+      height: 350px;
+      background-color: #FFFFFF;
+      color: #1A1A1A;
+      
+      border-radius: 18px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+      border: 4px solid #FFFFFF; /* High visibility enhancement */
+      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 18px;
+      text-align: center;
+      z-index: 100;
+    }
+
+    .meeting-square img {
+      width: 100%;
+      height: 165px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .meeting-square h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #E97E1A;
+      margin-bottom: 12px;
+    }
+
+    /* Action Links Container inside Square */
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .action-btn {
+      flex: 1;
+      padding: 9px 0;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .btn-details {
+      background-color: #E97E1A;
+      color: #FFFFFF;
+      box-shadow: 0 4px 10px rgba(233, 126, 26, 0.3);
+      border: none;
+    }
+
+    .btn-details:hover {
+      background-color: #d16d12;
+    }
+
+    .btn-location {
+      background-color: #e6f7f5;
+      color: #11998e;
+      border: 1.5px solid #11998e;
+    }
+
+    .btn-location:hover {
+      background-color: #11998e;
+      color: #FFFFFF;
+    }
+
+    /* ==========================================
+       3. POPUP MODAL (Text Details)
+    ========================================== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.65);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .modal-box {
+      background-color: #FFFFFF;
+      padding: 30px;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 440px;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #888;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: #000;
+    }
+
+    .modal-box h2 {
+      color: #E97E1A;
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .modal-box p {
+      color: #444;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .modal-box ul {
+      list-style: none;
+      margin-bottom: 15px;
+    }
+
+    .modal-box ul li {
+      color: #333;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .modal-box ul li span {
+      color: #11998e;
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- LEFT SIDE (60% Width) -->
+    <div class="left-half">
+      <h1>Venkateshwara<br>Luxury PG</h1>
+      <p class="blank-text">
+        Experience premium co-living designed specifically for students and working professionals. Enjoy top-tier comfort, hygiene, safety, and a vibrant community atmosphere right at your doorstep.
+      </p>
+      <p class="blank-text" style="font-size: 0.95rem; opacity: 0.9;">
+        Prime location with seamless connectivity to tech parks, colleges, supermarkets, and public transport hubs.
+      </p>
+    </div>
+
+    <!-- RIGHT SIDE (40% Width with Image Slider & PG Details) -->
+    <div class="right-half">
+      <!-- Sliding Images of Rooms and Buildings -->
+      <div class="slider-container">
+        <div class="slider-track">
+          <img class="slide" src="pgroom.webp" alt="PG Room">
+          <img class="slide" src="exterior.jpg" alt="Building Exterior">
+          <img class="slide" src="dining.avif" alt="Dining Area">
+        
+        </div>
+      </div>
+
+      <!-- Best PG Highlights Card -->
+      <div class="pg-details-card">
+        <h3>✨ Why Choose Us?</h3>
+        <ul>
+          <li><span>✔</span> 3 Times Nutritious Meals (Veg & Non-Veg)</li>
+          <li><span>✔</span> High-Speed Wi-Fi Router per Floor</li>
+          <li><span>✔</span>  24/7 CCTV Security</li>
+          <li><span>✔</span> Daily Room Cleaning & Power Backup</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MEETING POINT SQUARE BOX (Sits exactly on the 60/40 border) -->
+    <div class="meeting-square">
+      <img src="test image.webp" alt="Featured Room">
+      <h4>Venkateswara PG</h4>
+      
+      <div class="card-actions">
+        <!-- View Details Button Trigger -->
+        <button class="action-btn btn-details" id="openModal">View Details</button>
+        
+        <!-- Location Link -->
+        <a href="https://maps.google.com/?q=mazeen+manzil" target="_blank" class="action-btn btn-location">
+          📍 Location
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- POPUP MODAL (Text Details) -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h2>Room & Stay Information</h2>
+      <p>Our rooms are fully furnished with orthopedic mattresses, individual wardrobes, study tables, attached washrooms with geysers, and high-speed internet.</p>
+      
+      <ul>
+        <li><span>✦</span> Single, Double & Triple Sharing Available</li>
+        <li><span>✦</span> Mineral Drinking Water (RO) Provided</li>
+        <li><span>✦</span> Dedicated Washing Machines & Drying Area</li>
+        <li><span>✦</span> Zero Brokerage & Flexible Deposit Terms</li>
+      </ul>
+
+      <p><strong>Contact Inquiry:</strong> +91 98765 43210</p>
+    </div>
+  </div>
+
+  <!-- JavaScript for Popup Interaction -->
+  <script>
+    const openBtn = document.getElementById('openModal');
+    const closeBtn = document.getElementById('closeModal');
+    const modal = document.getElementById('modalOverlay');
+
+    openBtn.addEventListener('click', () => modal.classList.add('active'));
+    closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('active');
+    });
+  </script>
+
+</body>
+</html>
